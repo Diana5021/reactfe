@@ -4,20 +4,29 @@ import {
   Route
 } from 'react-router-dom'
 
-import fetch from 'utils/fetch'
+import { connect } from 'react-redux'
+
+// import fetch from 'utils/fetch'
+import { getUserASync } from 'store/login/actionCreator'
 
 import { HomeCon, TabCon } from './styled'
 
 import HomePage from 'pages/homepage/index'
 
-export default class Home extends PureComponent {
+const mapState = state => ({
+  userinfo: state.getIn(['users','userinfo'])
+})
+
+const mapDispatch = dispatch => ({
+  checkLogin() {
+    dispatch(getUserASync())
+  }
+})
+
+class Home extends PureComponent {
   constructor(props) {
-    super(props) 
-    this.state = {
-      haslogin: false
-    }
-    this.checkLogin = this.checkLogin.bind(this)
-    this.checkLogin()
+    super(props)
+    this.props.checkLogin()
   }
   render() {
     let num = 2
@@ -34,8 +43,8 @@ export default class Home extends PureComponent {
             (num > 0) ? (<span>{num}</span>) : (<></>)
           }
           </NavLink>
-          {
-            this.state.haslogin ? 
+          {        
+            ( this.props.userinfo.getIn(['code']) === 200 ) ? 
             ( <NavLink activeClassName='selected' className='profile' to='/home/profile'></NavLink> )
             :
             ( <NavLink className='unlogin' to='/user/login'></NavLink> )
@@ -44,20 +53,6 @@ export default class Home extends PureComponent {
       </HomeCon>
     )
   }
-
-  async checkLogin() {//{ code, data }
-    let url = '/ws/api/v1/users/author'
-    let postData = { token: localStorage.token }
-    let data = await fetch.post({url,postData})
-    console.log(data)
-    data.code === 200 ? 
-    this.setState({
-      haslogin: true
-    })
-    : 
-    this.setState({
-      haslogin: false
-    })
-    
-  }
 }
+
+export default connect(mapState,mapDispatch)(Home)

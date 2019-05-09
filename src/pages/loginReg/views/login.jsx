@@ -122,8 +122,7 @@ class Login extends PureComponent {
     }
     let { code, msg, data } = await fetch.post({ url, postData })
     if(code === 200) {
-      Toast.success('登录成功',1)    
-      console.log(data.token)  
+      Toast.success('登录成功',1)
       localStorage.token = data.token 
       this.props.history.push('/home')
       return
