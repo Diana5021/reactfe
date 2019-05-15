@@ -11,7 +11,4 @@ export const SwiperCon = styled.div`
   img{
     width: 100%;
   }
-  /* .slider-list .slider-frame {
-    height: 100% !important
-  } */
 `
