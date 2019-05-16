@@ -5,7 +5,7 @@ import { Carousel } from 'antd-mobile'
 
 import fetch from 'utils/fetch'
 
-import { SwiperCon } from './styed'
+import { SwiperCon } from './styled'
 
 export default class Swiper extends PureComponent {
   constructor(props) {
@@ -56,7 +56,6 @@ export default class Swiper extends PureComponent {
   
   async getImg() {
     let { data } = await fetch.get('/ws/api/v1/imgs/')
-    console.log(data)
     this.setState({
       imgs: data
     })

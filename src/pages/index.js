@@ -11,6 +11,7 @@ import {
 
 import Home from './home/index'
 import { Login, Register } from './loginReg/'
+import Search from './searcha/'
 
 // const mapDispatch = dispatch => {}
 
@@ -24,6 +25,7 @@ export default class AppUI extends PureComponent {
             <Route path='/home' component={Home}></Route>
             <Route path='/user/login' component={Login}></Route>
             <Route path='/user/register' component={Register}></Route>
+            <Route path='/shop/search' component={Search}></Route>
           </Switch>
         </Router>
       </>

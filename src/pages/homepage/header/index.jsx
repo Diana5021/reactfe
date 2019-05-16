@@ -6,7 +6,7 @@ import {
 
 import { connect } from 'react-redux'
 
-import { HeaderCon } from './styed'
+import { HeaderCon } from './styled'
 
 import { getUserASync } from 'store/login/actionCreator'
 
