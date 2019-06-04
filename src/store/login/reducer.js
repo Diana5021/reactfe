@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable' 
 
-import { AUTHOR } from '../actionTypes'
+import { AUTHOR } from './actionTypes'
 
 const defaultState =fromJS({
   userinfo: {}

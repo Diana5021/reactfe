@@ -12,9 +12,11 @@ import { getUserASync } from 'store/login/actionCreator'
 import { HomeCon, TabCon } from './styled'
 
 import HomePage from 'pages/homepage/index'
+import Shopcart from 'pages/shopcart/index'
 
 const mapState = state => ({
-  userinfo: state.getIn(['users','userinfo'])
+  userinfo: state.getIn(['users','userinfo']),
+  cartlist: state.getIn(['list','cartlist'])
 })
 
 const mapDispatch = dispatch => ({
@@ -29,11 +31,12 @@ class Home extends PureComponent {
     this.props.checkLogin()
   }
   render() {
-    let num = 2
+    let num = this.props.cartlist.size
     return (
       <HomeCon>
         <main>
           <Route exact path='/home' component={HomePage}></Route>
+          <Route exact path='/home/cart' component={Shopcart}></Route>
         </main>
         <TabCon>
           <NavLink exact activeClassName='selected' className='homepage' to='/home'></NavLink>

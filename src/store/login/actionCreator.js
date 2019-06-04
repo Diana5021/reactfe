@@ -1,5 +1,5 @@
 import fetch from 'utils/fetch'
-import { AUTHOR } from '../actionTypes'
+import { AUTHOR } from './actionTypes'
 
 export const getUserSync = userinfo => ({
   type: AUTHOR,
