@@ -27,7 +27,7 @@ class Recommend extends PureComponent {
           <ul>
             {
               this.state.shop.map ( value => (
-                <li key={value._id} onClick={() => {this.props.history.push('/home/categ')}}>
+                <li key={value._id} onClick={() => {this.props.history.push('/shop/detial',{shop: value})}}>
                   <span>
                   <div>
                     <img src={value.Picture[0].url} alt=""/>

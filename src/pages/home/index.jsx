@@ -11,8 +11,10 @@ import { getUserASync } from 'store/login/actionCreator'
 
 import { HomeCon, TabCon } from './styled'
 
-import HomePage from 'pages/homepage/index'
-import Shopcart from 'pages/shopcart/index'
+import HomePage from 'pages/homepage/'
+import Category from 'pages/category/'
+import Shopcart from 'pages/shopcart/'
+import Profile from 'pages/profile/'
 
 const mapState = state => ({
   userinfo: state.getIn(['users','userinfo']),
@@ -36,7 +38,9 @@ class Home extends PureComponent {
       <HomeCon>
         <main>
           <Route exact path='/home' component={HomePage}></Route>
+          <Route exact path='/home/categ' component={Category}></Route>
           <Route exact path='/home/cart' component={Shopcart}></Route>
+          <Route exact path='/home/profile' component={Profile}></Route>
         </main>
         <TabCon>
           <NavLink exact activeClassName='selected' className='homepage' to='/home'></NavLink>
